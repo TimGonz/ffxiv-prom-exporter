@@ -1,3 +1,4 @@
-Flask==1.0.2
 prometheus_client==0.5.0
 requests==2.21.0
+BasicHttpServer=1.0.0
+regex==2018.2.21
