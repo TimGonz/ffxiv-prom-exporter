@@ -9694,7 +9694,7 @@ class CustomCollector(object):
 
     def collect(self):
         response = requests.get("{url}/market/{server}/items/{item_id}".format(url=baseUrl, server=self.server, item_id=self.item_id), params=parms)
-        var = GaugeMetricFamily(re.sub(r"[^a-zA-Z0-9]+", '_', str(item_id_lookup[self.item_id]).lower()), "", labels=["server", "town", "price_per_unit", "quantity", "retainer"])
+        var = GaugeMetricFamily(re.sub(r"[^a-zA-Z0-9]+", '_', str(item_id_lookup[self.item_id]).lower()), "", labels=["server", "town", "quantity", "retainer"])
         for price in response.json()["Prices"]:
             var.add_metric(labels=[self.server, price["Town"]["Name_en"], str(price["Quantity"]), price["RetainerName"]], value=price["PricePerUnit"])
         yield var
